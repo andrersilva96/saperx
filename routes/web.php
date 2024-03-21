@@ -6,8 +6,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Single Action Pattern
-Route::group(['namespace' => '\App\Http\Controllers\Pages\Users', 'as' => 'users.'], function () {
-    Route::get('/', 'Index')->name('index');
-    Route::get('/{user}', 'Show')->name('show');
-});
+Route::get('/', '\App\Http\Controllers\Pages\Users\Index')->name('users.index');
+Route::get('user/{user}', '\App\Livewire\Show')->name('users.show');

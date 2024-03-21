@@ -11,18 +11,29 @@
     <!-- Scripts -->
     @vite(['resources/scss/app.scss', 'resources/js/app.js'])
 
+    <!-- Styles -->
+    @livewireStyles
 </head>
 
 <body x-data>
     <header>
         @include('layouts.partials.navbar')
     </header>
+
+    <!-- Page Content -->
     <main class="container py-3">
-        @yield('content')
+        @hasSection('content')
+            <!-- Blade -->
+            @yield('content')
+        @else
+            <!-- Livewire -->
+            {{ $slot }}
+        @endif
     </main>
 
     @routes
 
+    @livewireScripts
 
     @stack('scripts')
 </body>
