@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Agenda Telefônica</h1>
+    <div class="d-flex justify-content-between align-items-center">
+        <h1>Agenda Telefônica</h1>
+        <a class="btn btn-sm btn-primary" href="{{ route('users.save') }}" style="height: fit-content">Adicionar contato</a>
+    </div>
 
     <table x-data="showComponent()" class="table table-striped">
         <thead>
@@ -22,10 +25,10 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->doc }}</td>
-                    <td>{{ $user->birth_date }}</td>
+                    <td>{{ \Carbon\Carbon::parse($user->birth_date)->format('Y/m/d') }}</td>
                     <td>
                         {{ $user->phones->first() }}
-                        @if ($user->phones->count() != 1)
+                        @if ($user->phones->count() > 1)
                             <button class="btn btn-sm btn-primary" data-bs-toggle="tooltip" data-bs-placement="top"
                                 title="{{ $user->phones->implode(', ') }}">
                                 @include('icons.eye')
@@ -33,7 +36,7 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{ route('users.show', $user->id) }}" class="btn btn-sm btn-success">Ver</a>
+                        <a href="{{ route('users.save', $user->id) }}" class="btn btn-sm btn-success">Ver</a>
                         <button class="btn btn-sm btn-danger ms-3" @click="await remove({{ $user->id }})">
                             Excluir
                         </button>
