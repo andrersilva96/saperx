@@ -33,7 +33,7 @@
                         @endif
                     </td>
                     <td>
-                        <a class="btn btn-sm btn-success">Ver</a>
+                        <a href="{{ route('users.show', $user->id) }}" class="btn btn-sm btn-success">Ver</a>
                         <button class="btn btn-sm btn-danger ms-3" @click="await remove({{ $user->id }})">
                             Excluir
                         </button>
