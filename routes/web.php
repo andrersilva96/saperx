@@ -8,5 +8,5 @@ Route::get('/', function () {
 
 // Single Action Pattern
 Route::group(['namespace' => '\App\Http\Controllers\Pages\Users', 'as' => 'users.'], function () {
-    Route::get('/', 'Show')->name('show');
+    Route::get('/', 'Index')->name('index');
 });

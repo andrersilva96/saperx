@@ -10,6 +10,7 @@
 
     <!-- Scripts -->
     @vite(['resources/scss/app.scss', 'resources/js/app.js'])
+
 </head>
 
 <body x-data>
@@ -19,6 +20,9 @@
     <main class="container py-3">
         @yield('content')
     </main>
+
+    @routes
+
 
     @stack('scripts')
 </body>

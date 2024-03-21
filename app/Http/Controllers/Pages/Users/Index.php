@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Pages\Users;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 
-class Show extends Controller
+class Index extends Controller
 {
     public function __invoke(): mixed
     {
-        return view('pages.users.show', [
+        return view('pages.users.index', [
             'users' => User::all()
         ]);
     }

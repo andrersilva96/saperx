@@ -3,7 +3,7 @@
 @section('content')
     <h1>Agenda Telefônica</h1>
 
-    <table class="table table-striped">
+    <table x-data="showComponent()" class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">ID</th>
@@ -33,8 +33,10 @@
                         @endif
                     </td>
                     <td>
-                        <a href="#" class="btn btn-sm btn-success">Ver</a>
-                        <a href="#" class="btn btn-sm btn-danger ms-3">Excluir</a>
+                        <a class="btn btn-sm btn-success">Ver</a>
+                        <button class="btn btn-sm btn-danger ms-3" @click="await remove({{ $user->id }})">
+                            Excluir
+                        </button>
                     </td>
                 </tr>
             @endforeach
@@ -44,6 +46,21 @@
 
 @push('scripts')
     <script>
-        // alert(123)
+        function showComponent() {
+            return {
+                async remove(id) {
+                    const action = route('api.users.destroy', id)
+                    const response = await fetch(action, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    });
+                    if (response.status === 200) {
+                        location.reload()
+                    }
+                }
+            }
+        }
     </script>
 @endpush
