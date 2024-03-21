@@ -12,13 +12,15 @@
     @vite(['resources/scss/app.scss', 'resources/js/app.js'])
 </head>
 
-<body>
+<body x-data>
     <header>
         @include('layouts.partials.navbar')
     </header>
     <main class="container py-3">
         @yield('content')
     </main>
+
+    @stack('scripts')
 </body>
 
 </html>
