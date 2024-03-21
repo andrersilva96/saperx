@@ -9,6 +9,6 @@ class Index extends Controller
 {
     public function __invoke(): mixed
     {
-        return view('pages.users.index', ['users' => User::all()]);
+        return view('pages.users.index', ['users' => User::orderByDesc('id')->get()]);
     }
 }

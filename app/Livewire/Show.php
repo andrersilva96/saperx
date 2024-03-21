@@ -36,7 +36,7 @@ class Show extends Component
     {
         $this->validate();
         $this->user->save();
-        if ($this->user->wasRecentlyCreated) return redirect()->route('users.save', $this->user);
+        return redirect()->route('users.save', $this->user);
     }
 
     public function add()
@@ -50,5 +50,6 @@ class Show extends Component
     {
         $this->user->phones = $this->user->phones->forget($id);
         $this->user->save();
+        $this->user->refresh();
     }
 }
