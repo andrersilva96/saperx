@@ -11,15 +11,15 @@ class UserTest extends TestCase
     use DatabaseMigrations;
 
     /** @test */
-    public function a_user_can_read_all_the_tasks()
+    public function save_user_and_see_it()
     {
         // Given we have user in the database
         $user = User::factory()->create();
 
         // When user visit the users page
-        $response = $this->get(route('users.index', $user->id));
+        $res = $this->get(route('users.index', $user->id));
 
         // He should be able to read the users
-        $response->assertSee($user->name);
+        $res->assertSee($user->name);
     }
 }

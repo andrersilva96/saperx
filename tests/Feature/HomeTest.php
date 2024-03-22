@@ -10,9 +10,9 @@ class HomeTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function test_the_visit_home(): void
+    public function visit_home(): void
     {
-        $response = $this->get(route('users.index'));
-        $response->assertStatus(200);
+        $res = $this->get(route('users.index'));
+        $res->assertStatus(200);
     }
 }

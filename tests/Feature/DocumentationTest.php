@@ -12,7 +12,7 @@ class DocumentationTest extends TestCase
     /** @test */
     public function visit_documentation(): void
     {
-        $response = Http::get('https://betterstack.com/community/guides/testing/laravel-unit-testing/');
-        $this->assertTrue($response->ok());
+        $res = Http::get('https://betterstack.com/community/guides/testing/laravel-unit-testing/');
+        $this->assertTrue($res->ok());
     }
 }
